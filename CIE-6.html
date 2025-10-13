@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Query script Tasks</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+
+    p, ul, div {
+      margin: 10px 0;
+      padding: 10px;
+    }
+    #list li:nth-child(1) {
+      color: red;
+      font-weight: bold;
+      font-style: normal;
+    }
+
+    #list li:nth-child(2) {
+      color: blue;
+      font-weight: normal;
+      font-style: italic;
+    }
+
+    #list li:nth-child(3) {
+      color: green;
+      font-weight: 600;
+      font-style: normal;
+      text-decoration: underline;
+    }
+
+    #list li:nth-child(4) {
+      color: orange;
+      font-weight: lighter;
+      font-style: italic;
+    }
+
+    #list li:nth-child(5) {
+      color: purple;
+      font-weight: bold;
+      font-style: normal;
+      font-family: 'Courier New', Courier, monospace;
+    }
+
+    .box {
+      width: 100px;
+      height: 100px;
+      background-color: #f4f4f4;
+      margin-bottom: 10px;
+    }
+    #animateBtn1 {
+      background-color: red;
+      color: white;
+          }
+
+    #animateBtn2 {
+      background-color: yellow;
+      color: black;
+          }
+
+       </style>
+</head>
+<body>
+  <h2>Append content</h2>
+  <p id="para">This is an existing paragraph</p>
+  <ul id="list">
+    <li>Item 1</li>
+    <li>Item 2</li>
+    <li>Item 3</li>
+    <li>Item 4</li>
+    <li>Item 5</li>
+  </ul>
+  <button id="appendBtn">Append content</button>
+
+  <h2>Animate elements</h2>
+  <div class="box" id="animateBox1"></div>
+  <button id="animateBtn1">Animate Box 1</button>
+
+  <div class="box" id="animateBox2"></div>
+  <button id="animateBtn2">Animate Box 2</button>
+
+  <script>
+    $(document).ready(function () {
+      let itemCount = $('#list li').length;
+
+      $('#appendBtn').click(() => {
+        itemCount++;
+        $('#para').append(` Appended text ${itemCount}.`);
+        $('#list').append(`<li style="color: #000; font-style: normal;">Item ${itemCount}</li>`);
+      });
+
+      $('#animateBtn1').click(() => {
+        $('#animateBox1').css({
+          width: '100px',
+          height: '100px',
+          'background-color': '#f4f4f4'
+        }).animate({
+          width: '150px',
+          height: '150px'
+        }, 500, function () {
+          $(this).css('background-color', 'lightblue');
+        });
+      });
+
+      $('#animateBtn2').click(() => {
+        $('#animateBox2').css({
+          width: '100px',
+          height: '100px',
+          'background-color': '#f4f4f4'
+        }).animate({
+          width: '120px',
+          height: '180px'
+        }, 700, function () {
+          $(this).css('background-color', 'lightpink');
+        });
+      });
+    });
+  </script>
+</body>
+</html>
